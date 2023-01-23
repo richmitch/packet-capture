@@ -1,0 +1,7 @@
+apiVersion: policy.open-cluster-management.io/v1beta1
+kind: PolicySet
+metadata:
+  name: packet-capture
+spec:
+  policies:
+    - policy-packet-capture-impact.yml

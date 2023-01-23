@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deploy-packet-capture.yml         # Labels the Impact clusters for Packet Capture
+  - placement-impact-clusters.yml     # Defines the Packet Capture PlacementRules for Impact clusters
+  - policy-packet-capture-impact.yml  # Configure the Packet Capture objects within the matched and enabled clusters
+
+patchesStrategicMerge:
+  - policyset-packet-capture.yml      # Adds Packet Capture for Impact to the Packet Capture PolicySet

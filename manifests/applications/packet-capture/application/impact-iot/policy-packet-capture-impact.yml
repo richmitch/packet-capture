@@ -1,0 +1,58 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-packet-capture-impact
+  annotations:
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: deploy-tcpdump-pods
+      spec:
+        remediationAction: inform
+        severity: high
+        namespaceSelector:
+          exclude:
+          - kube-*
+          include:
+          - impact-iot
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: # deploymentName-packet-capture
+              namespace: impact-iot
+            spec:
+              ...
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: packet-capture-ocp001pp002400
+placementRef:
+  name: packet-capture-ocp001pp002400
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: deploy-tcpdump-pods
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: packet-capture-ocp001pp003100
+placementRef:
+  name: packet-capture-ocp001pp003100
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: deploy-tcpdump-pods
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
