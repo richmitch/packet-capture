@@ -1,0 +1,97 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-packet-capture-ds
+  annotations:
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+  - objectDefinition:
+      apiVersion: policy.open-cluster-management.io/v1
+      kind: ConfigurationPolicy
+      metadata:
+        name: deploy-daemonset
+      spec:
+        remediationAction: inform
+        severity: high
+        namespaceSelector:
+          exclude:
+          - kube-*
+          - openshift-*
+          - open-*
+        object-templates:
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: apps/v1
+            kind: DaemonSet
+            metadata:
+              name: packet-capture
+              namespace: operations
+            spec:
+              selector:
+                matchLabels:
+                  operations.network/packet-capture: enabled
+              template:
+                metadata:
+                  annotations:
+                    cluster-autoscaler.kubernetes.io/enable-ds-eviction: "true"
+                    target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+                  labels:
+                    operations.network/packet-capture: enabled
+                spec:
+                  containers:
+                    - name: webserver
+                      image: httpd
+                      ports:
+                        - containerPort: 80
+                      volumeMounts:
+                      - mountPath: /etc/packet-capture/packet-capture.conf
+                        subPath: packet-capture.conf
+                        readOnly: true
+                        name: packet-capture-vol
+                  volumes:
+                  - name: packet-capture-vol
+                    configMap:
+                      name: packet-capture
+              updateStrategy:
+                rollingUpdate:
+                  maxSurge: 0
+                  maxUnavailable: 10%
+                type: RollingUpdate
+        - complianceType: musthave
+          objectDefinition:
+            apiVersion: v1
+            kind: ConfigMap
+            metadata:
+              name: packet-capture
+              namespace: operations
+            data:
+              namespace: openshift-insights
+              deployment: insight-operator
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: packet-capture-ocp001pp002400
+placementRef:
+  name: packet-capture-ocp001pp002400
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: deploy-tcpdump-pods
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: packet-capture-ocp001pp003100
+placementRef:
+  name: packet-capture-ocp001pp003100
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: deploy-tcpdump-pods
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io

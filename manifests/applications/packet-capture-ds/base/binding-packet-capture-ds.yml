@@ -1,0 +1,13 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-packet-capture-ds
+placementRef:
+  apiGroup: apps.open-cluster-management.io
+  name: packet-capture-ds
+  kind: PlacementRule
+subjects:
+  - name: packet-capture-ds
+    apiGroup: policy.open-cluster-management.io
+    kind: PolicySet
