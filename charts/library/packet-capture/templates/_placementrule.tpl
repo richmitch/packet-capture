@@ -19,7 +19,7 @@ spec:
       - key: {{ $cluster.label.key }}
         operator: {{ $cluster.label.operator }}
         {{- if $cluster.label.value }}
-        values: ["{{ $cluster.label.value | omit }}"]
+        values: ["{{ $cluster.label.value }}"]
         {{- end }}
 {{- end }}
 {{- end }}
