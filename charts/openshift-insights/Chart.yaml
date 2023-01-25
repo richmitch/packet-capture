@@ -2,11 +2,11 @@ apiVersion: v2
 name: openshift-insights
 description: Performs Packet Capture on OpenShift Insights operator deployment
 type: application
-version: 0.0.1
+version: 0.0.2
 maintainers:
   - name: richmitch
 dependencies:
 - name: packet-capture
-  version: 0.0.1
+  version: 0.0.2
   repository: https://richmitch.github.io/packet-capture/charts/
 #  repository: file://../library/packet-capture/
