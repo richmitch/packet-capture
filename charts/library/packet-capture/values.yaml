@@ -18,5 +18,3 @@ namespaces:
       - name: deployment-name
         remediationAction: inform
         disabled: true
-
-      
