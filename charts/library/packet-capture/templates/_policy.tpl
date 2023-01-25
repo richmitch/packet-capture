@@ -8,7 +8,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
-  name: {{ "pcap-" $deploy.namespace }}
+  name: "pcap-{{ $deploy.namespace }}"
   namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
@@ -19,7 +19,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: {{ "pcap-ds-" $deploy.namespace }}
+        name: "pcap-ds-{{ $deploy.namespace }}"
       spec:
         remediationAction: inform
         severity: high
