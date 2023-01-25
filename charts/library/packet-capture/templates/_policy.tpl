@@ -22,6 +22,7 @@ spec:
       kind: ConfigurationPolicy
       metadata:
         name: "pcap-{{ $deploy.name }}"
+        namespace: {{ $pcap.namespace }}
       spec:
         remediationAction: inform
         severity: high
