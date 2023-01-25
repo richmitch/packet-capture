@@ -1,0 +1,6 @@
+dependencies:
+- name: packet-capture
+  repository: file://../library/packet-capture/
+  version: 0.0.1
+digest: sha256:867a62d445cca9f60ac18048a955093f4186858ff4bacb77862d7bab21cfad14
+generated: "2023-01-25T11:12:09.97811+11:00"
