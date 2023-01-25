@@ -12,7 +12,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
-  name: packet-capture
+  name: "pcap-{{ $cluster.name }}-{{ $ns.name }}-{{ $deploy.name }}"
   namespace: {{ $pcap.namespace }}
 placementRef:
   name: "packet-capture-{{ $cluster.name }}"
