@@ -1,8 +1,8 @@
 {{- define "library.packetcapture.policy" -}}
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
-{{- if .Values.namespaces -}}
-{{- $ns := .Values.namespaces -}}
+{{- if .Values.namespaces }}
+{{- $ns := .Values.namespaces }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
