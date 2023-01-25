@@ -1,4 +1,4 @@
-{{- define "library.packet-capture.policy" -}}
+{{- define "library.packetcapture.policy" -}}
 {{- if .Values.packet-capture }}
 {{- $pcap = .Values.packet-capture }}
 {{- if .Values.deployments }}
