@@ -19,4 +19,3 @@ spec:
         value: {{- $pcap.label.value }}
 {{- end }}
 {{- end }}
-{{- end }}
