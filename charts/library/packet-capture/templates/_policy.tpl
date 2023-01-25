@@ -1,19 +1,19 @@
-{{- define "library.packet-capture.policy" -}}
+{{- define "library.packetcapture.policy" -}}
 {{- if .Values.packetcapture }}
-{{- $pcap = .Values.packet-capture }}
+{{- $pcap = .Values.packetcapture }}
 {{- if .Values.deployments }}
 {{- range $deploy := .Values.deployments }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-{{- include "packet-capture.labels" $ | indent 2 }}
+{{- include "packetcapture.labels" $ | indent 2 }}
   name: packet-capture
   namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
-  remediationAction: {{ $deploy.remediationAction }}
-  disabled: {{ $deploy.disabled }}
+  remediationAction: {{ $deploy.remediationAction | default "inform"  }}
+  disabled: {{ $deploy.disabled | default "true" }}
   policy-templates:
   - objectDefinition:
       apiVersion: policy.open-cluster-management.io/v1

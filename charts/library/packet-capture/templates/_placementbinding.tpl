@@ -1,11 +1,11 @@
-{{- define "library.packet-capture.placementbinding" -}}
-{{- if .Values.packet-capture }}
-{{- $pcap = .Values.packet-capture }}
+{{- define "library.packetcapture.placementbinding" -}}
+{{- if .Values.packetcapture }}
+{{- $pcap = .Values.packetcapture }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-{{- include "packet-capture.labels" $ | indent 2 }}
+{{- include "packetcapture.labels" $ | indent 2 }}
   name: packet-capture
   namespace: {{- $pcap.namespace }}
 placementRef:
