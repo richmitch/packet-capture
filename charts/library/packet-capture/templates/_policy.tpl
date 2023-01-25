@@ -14,8 +14,8 @@ metadata:
 spec:
 {{- if $ns.deployments }}
 {{- range $deploy := $ns.deployments }}
-  remediationAction: {{ $deploy.remediationAction | default "inform"  }}
-  disabled: {{ $deploy.disabled | default "true" }}
+  remediationAction: {{ $deploy.remediationAction }}
+  disabled: {{ $deploy.disabled }}
   policy-templates:
   - objectDefinition:
       apiVersion: policy.open-cluster-management.io/v1
