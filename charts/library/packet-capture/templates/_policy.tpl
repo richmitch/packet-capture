@@ -2,7 +2,6 @@
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
 {{- if .Values.deployments }}
-{{- range $deploy := .Values.deployments }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
@@ -12,6 +11,7 @@ metadata:
   namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
+{{- range $deploy := .Values.deployments }}
   remediationAction: {{ $deploy.remediationAction | default "inform"  }}
   disabled: {{ $deploy.disabled | default "true" }}
   policy-templates:
@@ -19,7 +19,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: packet-capture-daemonset
+        name: "pcap-ds-" {{ $deploy.namespace }}
       spec:
         remediationAction: inform
         severity: high
