@@ -1,0 +1,17 @@
+# Default values for operatorhub.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+packet-capture:
+  namespace: policies
+  label:
+    key: operations.network/packet-capture
+    value: enabled
+
+deployments:
+  - name: deployment-name
+    namespace: namespace-name
+    remediationAction: inform
+    disabled: false
+
+      
