@@ -2,16 +2,16 @@
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
 {{- if .Values.deployments }}
+{{- range $deploy := .Values.deployments }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
-  name: packet-capture
+  name: {{ "pcap-" $deploy.namespace }}
   namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
-{{- range $deploy := .Values.deployments }}
   remediationAction: {{ $deploy.remediationAction | default "inform"  }}
   disabled: {{ $deploy.disabled | default "true" }}
   policy-templates:
