@@ -2,7 +2,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "packet-capture.name" -}}
+{{- define "packetcapture.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
@@ -11,7 +11,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "packet-capture.fullname" -}}
+{{- define "packetcapture.fullname" -}}
 {{- if .Values.fullnameOverride -}}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
@@ -27,21 +27,21 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "packet-capture.chart" -}}
+{{- define "packetcapture.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Selector labels
 */}}
-{{- define "packet-capture.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "packet-capture.name" . }}
+{{- define "packetcapture.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "packetcapture.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{- define "packet-capture.labels" }}
+{{- define "packetcapture.labels" }}
 labels:
-  app: {{ include "packet-capture.name" . }}
+  app: {{ include "packetcapture.name" . }}
   chart: {{ print .Chart.Name "-" .Chart.Version }}
   release: {{ .Release.Name }}
   heritage: {{ $.Release.Service }}
