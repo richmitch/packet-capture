@@ -2,7 +2,7 @@ apiVersion: v2
 name: packet-capture
 description: A library Helm chart for deploying Packet Capture
 type: library
-version: 0.02
+version: 0.0.2
 appVersion: latest
 home: https://github.com/richmitch/packet-capture/charts
 maintainers:

@@ -28,6 +28,6 @@ entries:
     name: packet-capture
     type: library
     urls:
-    - https://richmitch.github.io/packet-capture/charts/packet-capture-0.02.tgz
-    version: "0.02"
+    - https://richmitch.github.io/packet-capture/charts/packet-capture-0.0.2.tgz
+    version: "0.0.2"
 generated: "2023-01-25T15:06:07.547984+11:00"
