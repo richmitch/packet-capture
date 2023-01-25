@@ -19,7 +19,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: "pcap-ds-" {{ $deploy.namespace }}
+        name: {{ "pcap-ds-" $deploy.namespace }}
       spec:
         remediationAction: inform
         severity: high
