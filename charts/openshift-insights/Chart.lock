@@ -1,6 +1,6 @@
 dependencies:
 - name: packet-capture
-  repository: file://../library/packet-capture/
+  repository: https://richmitch.github.io/packet-capture/charts/
   version: 0.0.1
-digest: sha256:867a62d445cca9f60ac18048a955093f4186858ff4bacb77862d7bab21cfad14
-generated: "2023-01-25T11:12:09.97811+11:00"
+digest: sha256:fc01c5700dfe736bbff1433c23658e9427a5f3356877a2c221d67367282d1239
+generated: "2023-01-25T11:52:48.823242+11:00"
