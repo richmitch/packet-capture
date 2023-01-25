@@ -18,7 +18,9 @@ spec:
     matchExpressions:
       - key: {{ $cluster.label.key }}
         operator: {{ $cluster.label.operator }}
+        {{- if $cluster.label.value }}
         values: ["{{ $cluster.label.value | omit }}"]
+        {{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
