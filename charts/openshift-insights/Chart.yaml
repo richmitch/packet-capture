@@ -8,5 +8,5 @@ maintainers:
 dependencies:
 - name: packet-capture
   version: 0.0.1
-  repository: https://richmitch.github.io/packet-capture/charts/
-#  repository: file://../library/packet-capture/
+#  repository: https://richmitch.github.io/packet-capture/charts/
+  repository: file://../library/packet-capture/
