@@ -15,7 +15,7 @@ spec:
   clusterSelector:
     matchExpressions:
       - key: {{ $pcap.label.key }}
-        operator: Equals
+        operator: Fred
         value: {{ $pcap.label.value }}
 {{- end }}
 {{- end }}
