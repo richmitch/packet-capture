@@ -9,9 +9,9 @@ metadata:
   name: packet-capture
   namespace: {{- $pcap.namespace }}
 placementRef:
-  apiGroup: apps.open-cluster-management.io
+- name: packet-capture
   kind: PlacementRule
-  name: packet-capture
+  apiGroup: apps.open-cluster-management.io
 subjects:
 - name: packet-capture
   kind: Policy
