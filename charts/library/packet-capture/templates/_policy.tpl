@@ -77,7 +77,7 @@ spec:
               name: "packet-capture-{{ $deploy.name }}"
               namespace: {{ $ns.name }}
             data:
-              namespace: {{ $ms.name }}
+              namespace: {{ $ns.name }}
               deployment: {{ $deploy.name }}
 {{- end }}
 {{- end }}
