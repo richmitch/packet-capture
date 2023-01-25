@@ -7,9 +7,9 @@ kind: PlacementBinding
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
   name: packet-capture
-  namespace: {{- $pcap.namespace }}
+  namespace: {{ $pcap.namespace }}
 placementRef:
-- name: packet-capture
+  name: packet-capture
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
@@ -19,3 +19,15 @@ subjects:
 {{- end }}
 {{- end }}
 
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: packet-capture-ocp001pp002400
+placementRef:
+  name: packet-capture-ocp001pp002400
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: deploy-tcpdump-pods
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io

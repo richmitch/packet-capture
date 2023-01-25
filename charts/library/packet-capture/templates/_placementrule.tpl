@@ -7,7 +7,7 @@ kind: PlacementRule
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
   name: packet-capture
-  namespace: {{- $pcap.namespace }}
+  namespace: {{ $pcap.namespace }}
 spec:
   clusterConditions:
   - status: "True"
