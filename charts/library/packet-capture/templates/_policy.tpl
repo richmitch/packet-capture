@@ -37,7 +37,7 @@ spec:
             kind: DaemonSet
             metadata:
               name: "packet-capture-{{ $deploy.name }}"
-              namespace: {{ $deploy.namespace }}
+              namespace: {{ $ns.namespace }}
             spec:
               selector:
                 matchLabels:
