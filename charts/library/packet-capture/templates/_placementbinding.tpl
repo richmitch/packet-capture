@@ -1,6 +1,6 @@
 {{- define "library.packetcapture.placementbinding" -}}
 {{- if .Values.packetcapture }}
-{{- $pcap = .Values.packetcapture }}
+{{- $pcap := .Values.packetcapture }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding

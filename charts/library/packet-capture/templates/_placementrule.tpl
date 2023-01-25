@@ -1,6 +1,6 @@
 {{- define "library.packetcapture.placementrule" -}}
 {{- if .Values.packetcapture }}
-{{- $pcap = .Values.packetcapture }}
+{{- $pcap := .Values.packetcapture }}
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
