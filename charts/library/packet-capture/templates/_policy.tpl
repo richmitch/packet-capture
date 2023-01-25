@@ -9,11 +9,11 @@ kind: Policy
 metadata:
 {{- include "packet-capture.labels" $ | indent 2 }}
   name: packet-capture
-  namespace: {{- $pcap.namespace }}  
+  namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
-  remediationAction: {{- $deploy.remediationAction }}
-  disabled: {{- $deploy.disabled }}
+  remediationAction: {{ $deploy.remediationAction }}
+  disabled: {{ $deploy.disabled }}
   policy-templates:
   - objectDefinition:
       apiVersion: policy.open-cluster-management.io/v1
@@ -35,7 +35,7 @@ spec:
             kind: DaemonSet
             metadata:
               name: packet-capture
-              namespace: {{- $deploy.namespace }}
+              namespace: {{ $deploy.namespace }}
             spec:
               selector:
                 matchLabels:
@@ -75,8 +75,8 @@ spec:
               name: packet-capture
               namespace: operations
             data:
-              namespace: {{- $deploy.namespace }}
-              deployment: {{- $deploy.name }}
+              namespace: {{ $deploy.namespace }}
+              deployment: {{ $deploy.name }}
 {{- end }}
 {{- end }}
 {{- end }}
