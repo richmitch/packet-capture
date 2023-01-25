@@ -11,8 +11,8 @@ packetcapture:
 namespaces:
   - name: namespace-name
     deployments:
-    - name: deployment-name
-      remediationAction: inform
-      disabled: true
+      - name: deployment-name
+        remediationAction: inform
+        disabled: true
 
       
