@@ -8,7 +8,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
-  name: "packet-capture-" {{ $cluster.name }}
+  name: "packet-capture-{{ $cluster.name }}"
   namespace: {{ $pcap.namespace }}
 spec:
   clusterConditions:
