@@ -2,7 +2,7 @@
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
 {{- if .Values.namespaces }}
-{{- $ns := .Values.namespaces }}
+{{- range $ns := .Values.namespaces }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
