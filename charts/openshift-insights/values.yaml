@@ -8,10 +8,13 @@ packetcapture:
     key: operations.network/packet-capture
     value: enabled
 
-deployments:
+namespaces:
+- name: openshift-insights
+  deployments:
   - name: insights-operator
-    namespace: openshift-insights
     remediationAction: inform
     disabled: false
-
+  - name: another-operator
+    remediationAction: inform
+    disabled: false
       

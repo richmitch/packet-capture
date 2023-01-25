@@ -1,17 +1,19 @@
 {{- define "library.packetcapture.policy" -}}
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
-{{- if .Values.deployments }}
-{{- range $deploy := .Values.deployments }}
+{{- if .Values.namespaces -}}
+{{- $ns := .Values.namespaces -}}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
 {{- include "packetcapture.labels" $ | indent 2 }}
-  name: "pcap-{{ $deploy.namespace }}"
+  name: "pcap-{{ $ns.namespace }}"
   namespace: {{ $pcap.namespace }}  
   annotations:
 spec:
+{{- if $ns.deployments }}
+{{- range $deploy := $ns.deployments }}
   remediationAction: {{ $deploy.remediationAction | default "inform"  }}
   disabled: {{ $deploy.disabled | default "true" }}
   policy-templates:
@@ -19,7 +21,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: "pcap-{{ $deploy.namespace }}"
+        name: "pcap-{{ $deploy.name }}"
       spec:
         remediationAction: inform
         severity: high
@@ -34,7 +36,7 @@ spec:
             apiVersion: apps/v1
             kind: DaemonSet
             metadata:
-              name: packet-capture
+              name: "packet-capture-{{ $deploy.name }}"
               namespace: {{ $deploy.namespace }}
             spec:
               selector:
@@ -72,11 +74,12 @@ spec:
             apiVersion: v1
             kind: ConfigMap
             metadata:
-              name: packet-capture
-              namespace: operations
+              name: "packet-capture-{{ $deploy.name }}"
+              namespace: {{ $deploy.namespace }}
             data:
               namespace: {{ $deploy.namespace }}
               deployment: {{ $deploy.name }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

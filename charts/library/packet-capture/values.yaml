@@ -8,10 +8,11 @@ packetcapture:
     key: operations.network/packet-capture
     value: enabled
 
-deployments:
-  - name: deployment-name
-    namespace: namespace-name
-    remediationAction: inform
-    disabled: false
+namespaces:
+  - name: namespace-name
+    deployments:
+    - name: deployment-name
+      remediationAction: inform
+      disabled: true
 
       
