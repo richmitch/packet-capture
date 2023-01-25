@@ -14,11 +14,6 @@ clusters:
       key: name
       operator: In
       value: local-cluster
-#  - name: Lab2
-#    label:
-#      key: name
-#      operator: In
-#      value: another-cluster
 
 namespaces:
   - name: openshift-insights
@@ -26,7 +21,3 @@ namespaces:
       - name: insights-operator
         remediationAction: inform
         disabled: false
-#      - name: another-operator
-#        remediationAction: inform
-#        disabled: false
-      
