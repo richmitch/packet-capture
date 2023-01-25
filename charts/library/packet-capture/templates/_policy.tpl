@@ -19,7 +19,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: "pcapls-{{ $deploy.namespace }}"
+        name: "pcap-{{ $deploy.namespace }}"
       spec:
         remediationAction: inform
         severity: high
