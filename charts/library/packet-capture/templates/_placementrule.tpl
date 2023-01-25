@@ -16,9 +16,9 @@ spec:
     type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - key: {{ $pcap.label.key }}
-        operator: {{ $pcap.label.operator }}
-        values: ["{{ $pcap.label.value | omit }}"]
+      - key: {{ $cluster.label.key }}
+        operator: {{ $cluster.label.operator }}
+        values: ["{{ $cluster.label.value | omit }}"]
 {{- end }}
 {{- end }}
 {{- end }}
