@@ -8,6 +8,13 @@ packetcapture:
     key: operations.network/packet-capture
     value: enabled
 
+clusters:
+  - name: Lab
+    label:
+      key: name
+      operator: In
+      value: local-cluster
+
 namespaces:
   - name: openshift-insights
     deployments:

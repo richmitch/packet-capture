@@ -1,6 +1,8 @@
 {{- define "library.packetcapture.placementrule" -}}
 {{- if .Values.packetcapture }}
 {{- $pcap := .Values.packetcapture }}
+{{- if .Values.clusters }}
+{{- range $cluster := .Values.clusters }}
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
@@ -15,7 +17,7 @@ spec:
   clusterSelector:
     matchExpressions:
       - key: {{ $pcap.label.key }}
-        operator: Equals
-        value: {{ $pcap.label.value }}
+        operator: {{ $pcap.label.operator }}
+        values: ["{{ $pcap.label.value | omit }}"]
 {{- end }}
 {{- end }}

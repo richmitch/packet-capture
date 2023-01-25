@@ -4,9 +4,13 @@
 
 packetcapture:
   namespace: policies
-  label:
-    key: operations.network/packet-capture
-    value: enabled
+
+clusters:
+  - name: cluster-name
+    label:
+      key: key-value
+      operator: operator-value
+      value: value-value
 
 namespaces:
   - name: namespace-name
