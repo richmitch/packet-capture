@@ -2,13 +2,13 @@ apiVersion: v1
 entries:
   openshift-insights:
   - apiVersion: v2
-    created: "2023-01-25T15:06:07.550444+11:00"
+    created: "2023-01-25T15:38:54.81006+11:00"
     dependencies:
     - name: packet-capture
       repository: https://richmitch.github.io/packet-capture/charts/
       version: 0.0.2
     description: Performs Packet Capture on OpenShift Insights operator deployment
-    digest: 372b63eb7fe0be873af31e4663d7b4efbe365defdf6ec8d39cfc1fa7f034b544
+    digest: 7e2fc373ab2284ce4f777abcfe696290b2cb99a85dae5d1d9e64a767af811504
     maintainers:
     - name: richmitch
     name: openshift-insights
@@ -19,9 +19,9 @@ entries:
   packet-capture:
   - apiVersion: v2
     appVersion: latest
-    created: "2023-01-25T15:06:07.551874+11:00"
+    created: "2023-01-25T15:38:54.810433+11:00"
     description: A library Helm chart for deploying Packet Capture
-    digest: db52f6d10822183aec0df93db27dbb76b39277e9338d08cd1a4d87e592b3c0da
+    digest: c64973ffb8dae2e33aeb3e6a3460db939122791571a5bd3f58a2a68660dbb982
     home: https://github.com/richmitch/packet-capture/charts
     maintainers:
     - name: richmitch
@@ -29,5 +29,5 @@ entries:
     type: library
     urls:
     - https://richmitch.github.io/packet-capture/charts/packet-capture-0.0.2.tgz
-    version: "0.0.2"
-generated: "2023-01-25T15:06:07.547984+11:00"
+    version: 0.0.2
+generated: "2023-01-25T15:38:54.807942+11:00"
