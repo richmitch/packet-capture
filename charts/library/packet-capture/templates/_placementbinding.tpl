@@ -18,5 +18,4 @@ subjects:
   apiGroup: policy.open-cluster-management.io
 {{- end }}
 {{- end }}
-{{- end }}
 
