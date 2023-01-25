@@ -9,12 +9,12 @@ packetcapture:
     value: enabled
 
 namespaces:
-- name: openshift-insights
-  deployments:
-  - name: insights-operator
-    remediationAction: inform
-    disabled: false
-  - name: another-operator
-    remediationAction: inform
-    disabled: false
+  - name: openshift-insights
+    deployments:
+    - name: insights-operator
+      remediationAction: inform
+      disabled: false
+    - name: another-operator
+      remediationAction: inform
+      disabled: false
       
